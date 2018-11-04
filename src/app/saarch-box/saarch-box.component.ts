@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs';
 import { SAMPLE_RESULTS } from './sample-results';
 
-import { map, startWith } from 'rxjs/operators';
+import { map, startWith, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Component({
@@ -45,11 +45,15 @@ export class SaarchBoxComponent implements OnInit {
 
   searchCode() {
     this.searchCodeResults = [];
-    this.restApiCallService.getGithubApiearchCodeResults(
+    this.restApiCallService.getGithubApiSearchCodeResults(
       this.query, this.language, this.repoOrUser, this.isRepo
-    ).subscribe(data => {
+    ).subscribe(
+      data => {
       console.log('searchCode result => ' + JSON.stringify(data));
       this.searchCodeResults = data;
+    },
+    (error) => {
+      console.log('error occured => ' + JSON.stringify(error));
     });
   }
 }

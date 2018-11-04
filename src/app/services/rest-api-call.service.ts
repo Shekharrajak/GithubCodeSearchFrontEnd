@@ -23,11 +23,12 @@ export class RestApiCallService {
     return body || { };
   }
 
-  getGithubApiearchCodeResults(q, language, repoOrUser, isRepo) {
+  getGithubApiSearchCodeResults(q, language, repoOrUser, isRepo) {
     const params = new HttpParams().set('q', q).set('language', language).set('repoOrUser', repoOrUser).set('isRepo', isRepo);
     const link = END_POINT + 'searchcode';
-     return this.http.get(link, {params}).pipe(
-       map(this.extractData)
+     return this.http.get(link, {params})
+     .pipe(
+       tap( (data) => map(this.extractData), (error) => Observable.throw(error) )
      );
   }
 }
