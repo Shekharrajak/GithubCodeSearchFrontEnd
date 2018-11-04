@@ -1,0 +1,9 @@
+<h1>Search</h1>
+    <input type="search" class="mat-elevation-z2" [mdAutocomplete]="auto" [formControl]="searchControl">
+    <div class="spacer"></div>
+
+    <md-autocomplete #auto="mdAutocomplete" class="mat-elevation-z2">
+      <md-option *ngFor="let item of filteredResults$ | async" [value]="item">
+        <span [innerHTML]="item | bold:searchControl.value"></span>
+      </md-option>
+    </md-autocomplete>
