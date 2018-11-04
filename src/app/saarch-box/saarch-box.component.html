@@ -1,5 +1,7 @@
 <h1>Search</h1>
     <input type="search" class="mat-elevation-z2" [matAutocomplete]="auto" [formControl]="searchControl">
+    <button mat-button (click)="searchCode()">Search code</button>
+      <!-- mat-icon>search</mat-icon> -->
     <div class="spacer">
 
     <mat-autocomplete #auto="matAutocomplete" class="mat-elevation-z2">

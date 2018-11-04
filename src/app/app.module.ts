@@ -8,6 +8,8 @@ import { SaarchBoxComponent } from './saarch-box/saarch-box.component';
 import { BoldPipe } from './customPipes/bold.pipe';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material';
+import { MatIconModule } from '@angular/material';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,12 @@ import { MatAutocompleteModule } from '@angular/material';
     ReactiveFormsModule,
     // material modules
     MatAutocompleteModule,
-    MatButtonModule, MatCheckboxModule
+    MatButtonModule, MatCheckboxModule,
+    MatIconModule,
+    HttpClientModule
+  ],
+  exports: [
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]

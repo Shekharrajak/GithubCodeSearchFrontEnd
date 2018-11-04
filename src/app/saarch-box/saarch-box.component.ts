@@ -35,7 +35,11 @@ export class SaarchBoxComponent implements OnInit {
   private filterResults(val: string): string[] {
     return val ? this.results.filter(v => v.toLowerCase().indexOf(val.toLowerCase()) === 0) : [];
   }
+
   ngOnInit() {
   }
 
+  searchCode() {
+
+  }
 }
