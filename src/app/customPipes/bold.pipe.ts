@@ -25,5 +25,5 @@ export class BoldPipe implements PipeTransform {
 }
 
 function escapeRegExp(val: string): string {
-  return val.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
+  return val.replace(/[-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, '\\$&');
 }

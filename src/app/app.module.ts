@@ -6,6 +6,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatButtonModule, MatCheckboxModule} from '@angular/material';
 import { SaarchBoxComponent } from './saarch-box/saarch-box.component';
 import { BoldPipe } from './customPipes/bold.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
+import { MatAutocompleteModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -16,6 +18,9 @@ import { BoldPipe } from './customPipes/bold.pipe';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
+    // material modules
+    MatAutocompleteModule,
     MatButtonModule, MatCheckboxModule
   ],
   providers: [],

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs/Observable';
+import { Component, OnInit } from '@angular/core';
+import { Observable} from 'rxjs';
 import { SAMPLE_RESULTS } from './sample-results';
 
-import 'rxjs/add/operator/startWith';
-import 'rxjs/add/operator/map';
+import { map, startWith } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-saarch-box',
@@ -21,10 +21,15 @@ export class SaarchBoxComponent implements OnInit {
 
   constructor() {
     this.searchControl = new FormControl('');
-    this.filteredResults$ = this.searchControl.valueChanges
-      .startWith('')
-      .map(val => this.filterResults(val))
-      .map(val => val.slice(0, 4));
+    // this.filteredResults$ =
+     this.searchControl.valueChanges
+    .subscribe( val => {
+      val = this.filterResults(val);
+      this.filteredResults$ = of(val);
+    });
+      // .startWith(' ')
+      // .map(val => this.filterResults(val))
+      // .map(val => val.slice(0, 4));
   }
 
   private filterResults(val: string): string[] {
