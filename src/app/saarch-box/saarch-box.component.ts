@@ -1,3 +1,4 @@
+import { RestApiCallService } from './../services/rest-api-call.service';
 import { FormControl } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Observable} from 'rxjs';
@@ -19,7 +20,10 @@ export class SaarchBoxComponent implements OnInit {
 
   results = SAMPLE_RESULTS;
 
-  constructor() {
+  searchCodeResults: any = [];
+  query: string ; language: string ; repoOrUser: string ; isRepo: string ;
+
+  constructor( private restApiCallService: RestApiCallService) {
     this.searchControl = new FormControl('');
     // this.filteredResults$ =
      this.searchControl.valueChanges
@@ -40,6 +44,12 @@ export class SaarchBoxComponent implements OnInit {
   }
 
   searchCode() {
-
+    this.searchCodeResults = [];
+    this.restApiCallService.getGithubApiearchCodeResults(
+      this.query, this.language, this.repoOrUser, this.isRepo
+    ).subscribe(data => {
+      console.log('searchCode result => ' + JSON.stringify(data));
+      this.searchCodeResults = data;
+    });
   }
 }
